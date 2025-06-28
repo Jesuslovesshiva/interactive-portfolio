@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Portfolio</title>
+    <title>Interactive Portfolio - 3D Web Experience</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Interactive 3D Portfolio showcasing web development projects with Three.js and modern technologies">
+    <meta name="keywords" content="portfolio, web developer, three.js, 3d, interactive, webgl, javascript">
+    <meta name="author" content="Your Name">
     
     <!-- External Dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -31,7 +36,7 @@
     <div id="canvas-container">
         <div id="ui-overlay">
             <div id="instructions" class="ui-element">
-                Use WASD or Arrow Keys to Move • Mouse to Look Around • Explore the world!
+                W: Accelerate • S: Brake/Reverse • A/D: Smooth Steering • Mouse: Camera • Explore Austria!
             </div>
             
             <button id="bypass-btn" class="ui-element">
@@ -44,20 +49,38 @@
         </div>
     </div>
 
-    <!-- Experience Modal -->
+    <!-- Experience Modal (Würth Factory) -->
     <div id="experience-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn">&times;</button>
-            <h2>Work Experience</h2>
-            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Lead Web Developer</h3>
-            <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Würth Austria • 2022 - Present</p>
-            <p style="margin-bottom: 1.5rem;">As a key member of the digital team, I architect and develop robust e-commerce solutions and internal web applications, focusing on performance, scalability, and user experience.</p>
-            <h4>Key Achievements</h4>
-            <ul style="margin-left: 20px;">
-                <li>Led the migration of a legacy system to a modern Vue.js framework, improving performance by 40%</li>
-                <li>Developed a new real-time inventory tracking system</li>
-                <li>Mentored two junior developers</li>
-            </ul>
+            <h2>Würth Factory Complex</h2>
+            <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #c12127, #fc4f00); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 48px;">🏭</div>
+                <div style="flex: 1; min-width: 300px;">
+                    <p style="margin-bottom: 24px;">Welcome to the Würth Factory Complex - a stunning example of modern industrial architecture featuring the company's iconic design elements including the famous UFO-shaped conference center.</p>
+                    
+                    <h3 style="color: #c12127; margin-bottom: 16px;">My Role at Würth Austria</h3>
+                    <p style="margin-bottom: 16px;">As <strong>Lead Web Developer</strong> at Würth Austria since 2022, I've been instrumental in modernizing our digital infrastructure and creating robust e-commerce solutions.</p>
+                    
+                    <h4 style="margin-bottom: 12px;">Key Achievements:</h4>
+                    <ul style="margin-left: 20px; margin-bottom: 24px;">
+                        <li><strong>System Migration:</strong> Led the migration from legacy systems to modern Vue.js framework, improving performance by 40%</li>
+                        <li><strong>Real-time Systems:</strong> Developed a new inventory tracking system with live updates</li>
+                        <li><strong>Team Leadership:</strong> Mentored junior developers and established coding standards</li>
+                        <li><strong>Architecture Design:</strong> Designed scalable solutions handling thousands of daily transactions</li>
+                    </ul>
+
+                    <h3 style="color: #c12127; margin-bottom: 16px;">Building Architecture Features</h3>
+                    <ul style="margin-left: 20px; margin-bottom: 24px;">
+                        <li><strong>Rectangular Office Building:</strong> Multi-story facility with detailed window facades and signature red support pillars</li>
+                        <li><strong>Glass Cube:</strong> Modern transparent structure with precision-engineered frame system</li>
+                        <li><strong>UFO Pod:</strong> Iconic mushroom-shaped conference center with curved glass windows</li>
+                        <li><strong>Connecting Bridges:</strong> Seamless integration between building components</li>
+                    </ul>
+
+                    <p style="color: var(--gray-600); font-style: italic;">This 3D model showcases advanced Three.js techniques including LatheGeometry for curved surfaces, PBR materials, and complex architectural composition - demonstrating the same attention to detail I bring to my work at Würth.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -76,6 +99,8 @@
                         <li>React</li>
                         <li>HTML5</li>
                         <li>CSS3</li>
+                        <li>Three.js</li>
+                        <li>WebGL</li>
                     </ul>
                 </div>
                 <div class="skill-column">
@@ -84,18 +109,22 @@
                         <li>Node.js</li>
                         <li>Express</li>
                         <li>PHP</li>
+                        <li>Python</li>
                         <li>SQL</li>
+                        <li>MongoDB</li>
                         <li>Firebase</li>
                     </ul>
                 </div>
                 <div class="skill-column">
-                    <h4>Tools</h4>
+                    <h4>Tools & DevOps</h4>
                     <ul class="skill-list">
-                        <li>Git</li>
+                        <li>Git & GitHub</li>
                         <li>CI/CD</li>
+                        <li>Docker</li>
                         <li>Webpack</li>
                         <li>Vitest</li>
                         <li>Agile/Scrum</li>
+                        <li>AWS/Vercel</li>
                     </ul>
                 </div>
             </div>
@@ -108,14 +137,34 @@
             <button class="close-btn">&times;</button>
             <h2>Project Showcase</h2>
             <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Vienna Transport Visualization</h3>
-                <p style="margin-bottom: 12px;">Interactive Data Visualization for public transport in Vienna. Built with D3.js and React.</p>
-                <a href="#" style="color: var(--primary-blue); font-weight: 500;">GitHub →</a>
+                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Interactive 3D Portfolio</h3>
+                <p style="margin-bottom: 12px;">This very website! A creative exploration of web-based interactivity using Three.js, featuring a fully navigable 3D world.</p>
+                <div style="margin-bottom: 12px;">
+                    <span style="background: #e0f2fe; color: #01579b; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">Three.js</span>
+                    <span style="background: #f3e5f5; color: #4a148c; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">WebGL</span>
+                    <span style="background: #e8f5e8; color: #1b5e20; padding: 4px 8px; border-radius: 4px; font-size: 12px;">JavaScript</span>
+                </div>
+                <a href="https://github.com/your-username/interactive-portfolio" target="_blank" style="color: var(--primary-blue); font-weight: 500;">GitHub →</a>
+            </div>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+                <h3 style="color: var(--gray-800); margin-bottom: 8px;">E-Commerce Platform</h3>
+                <p style="margin-bottom: 12px;">Modern e-commerce solution with real-time inventory, payment processing, and admin dashboard built with Vue.js.</p>
+                <div style="margin-bottom: 12px;">
+                    <span style="background: #e8f5e8; color: #1b5e20; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">Vue.js</span>
+                    <span style="background: #fff3e0; color: #e65100; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">Node.js</span>
+                    <span style="background: #f3e5f5; color: #4a148c; padding: 4px 8px; border-radius: 4px; font-size: 12px;">MongoDB</span>
+                </div>
+                <a href="#" style="color: var(--primary-blue); font-weight: 500;">View Demo →</a>
             </div>
             <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
-                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Interactive Portfolio</h3>
-                <p style="margin-bottom: 12px;">A creative exploration of web-based interactivity using Three.js.</p>
-                <a href="#" style="color: var(--primary-blue); font-weight: 500;">Source Code →</a>
+                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Data Visualization Dashboard</h3>
+                <p style="margin-bottom: 12px;">Interactive analytics dashboard with real-time charts and data processing capabilities using D3.js and React.</p>
+                <div style="margin-bottom: 12px;">
+                    <span style="background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">React</span>
+                    <span style="background: #fff8e1; color: #e65100; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 8px;">D3.js</span>
+                    <span style="background: #f1f8e9; color: #33691e; padding: 4px 8px; border-radius: 4px; font-size: 12px;">TypeScript</span>
+                </div>
+                <a href="#" style="color: var(--primary-blue); font-weight: 500;">GitHub →</a>
             </div>
         </div>
     </div>
@@ -126,13 +175,15 @@
             <button class="close-btn">&times;</button>
             <h2>Let's Connect</h2>
             <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
-                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #a855f7, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Photo</div>
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #a855f7, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 48px;">👨‍💻</div>
                 <div style="flex: 1; min-width: 300px;">
-                    <p style="margin-bottom: 24px;">I'm a passionate developer driven by creating elegant and effective digital experiences. Think I'd be a good fit for your team?</p>
+                    <p style="margin-bottom: 24px;">I'm a passionate developer driven by creating elegant and effective digital experiences. I love pushing the boundaries of what's possible on the web and bringing creative ideas to life through code.</p>
+                    <p style="margin-bottom: 24px; color: var(--gray-600);">Currently based in Vienna, Austria, I'm always excited to collaborate on innovative projects and discuss new opportunities.</p>
                     <div class="contact-links">
-                        <a href="#" class="contact-link">📧 Email</a>
-                        <a href="#" class="contact-link">💼 LinkedIn</a>
-                        <a href="#" class="contact-link">🔗 GitHub</a>
+                        <a href="mailto:your.email@example.com" class="contact-link">📧 Email</a>
+                        <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">💼 LinkedIn</a>
+                        <a href="https://github.com/your-username" target="_blank" class="contact-link">🔗 GitHub</a>
+                        <a href="https://twitter.com/your-handle" target="_blank" class="contact-link">🐦 Twitter</a>
                     </div>
                 </div>
             </div>
@@ -151,7 +202,13 @@
             <h2>Work Experience</h2>
             <h3 style="color: var(--primary-blue);">Lead Web Developer</h3>
             <p style="color: var(--gray-600); margin-bottom: 16px;">Würth Austria • 2022 - Present</p>
-            <p>As a key member of the digital team, I architect and develop robust e-commerce solutions and internal web applications.</p>
+            <p>As a key member of the digital team, I architect and develop robust e-commerce solutions and internal web applications, focusing on performance, scalability, and user experience.</p>
+            <h4 style="margin-top: 16px;">Key Achievements</h4>
+            <ul style="margin-left: 20px; margin-top: 8px;">
+                <li>Led the migration of a legacy system to a modern Vue.js framework, improving performance by 40%</li>
+                <li>Developed a new real-time inventory tracking system</li>
+                <li>Mentored two junior developers</li>
+            </ul>
         </div>
 
         <div class="card">
@@ -164,6 +221,8 @@
                         <li>TypeScript</li>
                         <li>Vue.js</li>
                         <li>React</li>
+                        <li>Three.js</li>
+                        <li>HTML5 & CSS3</li>
                     </ul>
                 </div>
                 <div class="skill-column">
@@ -172,14 +231,16 @@
                         <li>Node.js</li>
                         <li>Express</li>
                         <li>PHP</li>
-                        <li>SQL</li>
+                        <li>Python</li>
+                        <li>SQL & MongoDB</li>
                     </ul>
                 </div>
                 <div class="skill-column">
                     <h4>Tools</h4>
                     <ul class="skill-list">
-                        <li>Git</li>
+                        <li>Git & GitHub</li>
                         <li>CI/CD</li>
+                        <li>Docker</li>
                         <li>Webpack</li>
                         <li>Agile</li>
                     </ul>
@@ -189,24 +250,37 @@
 
         <div class="card">
             <h2>Contact</h2>
-            <p style="margin-bottom: 24px;">I'm a passionate developer driven by creating elegant digital experiences. Let's connect!</p>
+            <p style="margin-bottom: 24px;">I'm always excited to collaborate on innovative projects and discuss new opportunities. Let's connect!</p>
             <div class="contact-links">
-                <a href="#" class="contact-link">📧 Email</a>
-                <a href="#" class="contact-link">💼 LinkedIn</a>
-                <a href="#" class="contact-link">🔗 GitHub</a>
+                <a href="mailto:your.email@example.com" class="contact-link">📧 Email</a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">💼 LinkedIn</a>
+                <a href="https://github.com/your-username" target="_blank" class="contact-link">🔗 GitHub</a>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript Modules -->
+    <!-- JavaScript Modules - Load in correct order -->
     <script src="js/constants.js"></script>
     <script src="js/utils/debugLogger.js"></script>
     <script src="js/utils/eventManager.js"></script>
-    <script src="js/scene/sceneBuilder.js"></script>
+    <script src="js/objects/carFactory.js"></script>
+    <script src="js/objects/wuerthFactory.js"></script>
     <script src="js/objects/objectFactory.js"></script>
     <script src="js/environment/environmentBuilder.js"></script>
+    <script src="js/scene/sceneBuilder.js"></script>
     <script src="js/animation/animationController.js"></script>
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Fallback for users with JavaScript disabled -->
+    <noscript>
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #667eea; display: flex; align-items: center; justify-content: center; z-index: 9999;">
+            <div style="text-align: center; color: white; font-family: Arial, sans-serif;">
+                <h1>JavaScript Required</h1>
+                <p>This interactive portfolio requires JavaScript to function properly.</p>
+                <p>Please enable JavaScript in your browser and refresh the page.</p>
+            </div>
+        </div>
+    </noscript>
 </body>
 </html>

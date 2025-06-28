@@ -1,4 +1,4 @@
-// Main Application Module
+// Main Application Module - Enhanced Version - FIXED
 class PortfolioApp {
     constructor() {
         this.debugLogger = new DebugLogger(CONSTANTS.DEBUG_MODE);
@@ -7,12 +7,14 @@ class PortfolioApp {
         this.renderer = null;
         this.car = null;
         this.stations = [];
+        this.mountains = []; // Store mountain references like buildings
         this.currentStation = null;
         this.keys = {};
         this.mouseX = 0;
         this.mouseY = 0;
         this.isInitialized = false;
         this.particles = null;
+        this.textureLoader = null; // 🆕 Add texture loader
         
         // Module instances
         this.sceneBuilder = null;
@@ -23,7 +25,7 @@ class PortfolioApp {
 
     async init() {
         try {
-            this.debugLogger.log('🚀 Initializing Portfolio App...');
+            this.debugLogger.log('🚀 Initializing Enhanced Portfolio App...');
             
             if (!window.THREE) {
                 throw new Error('Three.js not loaded');
@@ -40,7 +42,7 @@ class PortfolioApp {
     }
 
     init3DScene() {
-        this.debugLogger.log('🎮 Creating 3D Scene...');
+        this.debugLogger.log('🎮 Creating Enhanced 3D Scene...');
 
         // Scene setup
         this.scene = new THREE.Scene();
@@ -55,16 +57,33 @@ class PortfolioApp {
         );
         this.camera.position.set(0, 15, 25);
 
-        // Renderer setup
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        // 🆕 ENHANCED RENDERER SETUP
+        this.renderer = new THREE.WebGLRenderer({ 
+            antialias: true, 
+            alpha: true,
+            powerPreference: "high-performance" // Use dedicated GPU if available
+        });
+        
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit to 2x for performance
+        
+        // 🆕 PROFESSIONAL SHADOW SETTINGS
         this.renderer.shadowMap.enabled = true;
-        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Soft shadows
+        this.renderer.shadowMap.autoUpdate = true;
+        
+        // 🆕 PROFESSIONAL TONE MAPPING
         this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        this.renderer.toneMappingExposure = 1.2;
+        this.renderer.toneMappingExposure = 1.2; // Slightly brighter
+        
+        // 🆕 BETTER COLOR MANAGEMENT
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
         const canvasContainer = document.getElementById('canvas-container');
         canvasContainer.appendChild(this.renderer.domElement);
+
+        // 🆕 Initialize texture loader
+        this.createTextureLoader();
 
         // Initialize modules
         this.sceneBuilder = new SceneBuilder(this.scene, this.debugLogger);
@@ -72,10 +91,12 @@ class PortfolioApp {
         this.animationController = new AnimationController(this);
         this.eventManager = new EventManager(this);
 
-        // Build scene
+        // Build scene with enhanced methods
         this.sceneBuilder.createSkybox();
-        this.sceneBuilder.createLighting();
+        this.sceneBuilder.createEnhancedLighting(); // 🆕 Enhanced lighting
         this.sceneBuilder.createTerrain();
+        this.sceneBuilder.createSun();
+        this.mountains = this.sceneBuilder.createMountains();
         this.environmentBuilder.createEnvironment();
 
         // Create objects
@@ -84,11 +105,24 @@ class PortfolioApp {
         this.particles = ObjectFactory.createGlobalParticles(this.scene);
 
         this.animate();
-        this.debugLogger.log('✅ 3D Scene created');
+        this.debugLogger.log('✅ Enhanced 3D Scene created');
+    }
+
+    // 🆕 Create texture loader with error handling
+    createTextureLoader() {
+        if (!this.textureLoader) {
+            this.textureLoader = new THREE.TextureLoader();
+            
+            // Set up error handling
+            this.textureLoader.manager.onError = (url) => {
+                console.warn(`Failed to load texture: ${url}`);
+            };
+        }
+        return this.textureLoader;
     }
 
     createCar() {
-        this.car = ObjectFactory.createCar();
+        this.car = CarFactory.createCar();
         this.car.position.set(0, 0, 0);
         this.scene.add(this.car);
         this.camera.position.set(0, 12, 20);
@@ -103,9 +137,11 @@ class PortfolioApp {
         });
     }
 
+    // 🚨 CRITICAL FIX: This is the main animation loop that was missing the proximity check!
     animate() {
         requestAnimationFrame(() => this.animate());
 
+        // Main animation calls
         this.animationController.updateCarMovement();
         this.animationController.checkStationProximity();
         this.animationController.animateScene();
@@ -142,7 +178,7 @@ class PortfolioApp {
     }
 
     start() {
-        this.debugLogger.log('🎉 Application started successfully');
+        this.debugLogger.log('🎉 Enhanced Application started successfully');
 
         // Hide loading screen
         const loading = document.getElementById('loading');
@@ -172,5 +208,5 @@ class PortfolioApp {
             loading.style.display = 'none';
             this.showClassicView();
         }, 500);
-    }
-}
+    }   
+}                

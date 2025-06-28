@@ -60,6 +60,42 @@ class EventManager {
             });
         });
 
+        // Portfolio tab switching
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('portfolio-tab')) {
+                const targetTab = e.target.getAttribute('data-tab');
+                this.switchPortfolioTab(targetTab);
+            }
+        });
+
         this.app.debugLogger.log('🎧 Event listeners setup');
+    }
+
+    switchPortfolioTab(targetTab) {
+        // Hide all content sections
+        document.querySelectorAll('.portfolio-content').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Remove active class from all tabs
+        document.querySelectorAll('.portfolio-tab').forEach(tab => {
+            tab.classList.remove('active');
+            tab.style.background = '#f1f5f9';
+            tab.style.color = 'var(--gray-600)';
+        });
+
+        // Show target content
+        const targetContent = document.getElementById(`${targetTab}-content`);
+        if (targetContent) {
+            targetContent.style.display = 'block';
+        }
+
+        // Activate target tab
+        const targetTabElement = document.querySelector(`[data-tab="${targetTab}"]`);
+        if (targetTabElement) {
+            targetTabElement.classList.add('active');
+            targetTabElement.style.background = 'var(--primary-blue)';
+            targetTabElement.style.color = 'white';
+        }
     }
 }
