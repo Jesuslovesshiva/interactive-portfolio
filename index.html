@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio</title>
+    
+    <!-- External Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/modals.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Interactive Portfolio...</div>
+    </div>
+
+    <!-- Debug Info -->
+    <div class="debug-info" id="debug-info">
+        <div class="debug-header">Debug Console</div>
+        <div id="debug-log">Starting application...</div>
+        <button class="debug-close">&times;</button>
+    </div>
+
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container">
+        <div id="ui-overlay">
+            <div id="instructions" class="ui-element">
+                Use WASD or Arrow Keys to Move • Mouse to Look Around • Explore the world!
+            </div>
+            
+            <button id="bypass-btn" class="ui-element">
+                Classic View
+            </button>
+            
+            <div id="interaction-prompt" class="ui-element">
+                Press [E] to Explore
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div id="experience-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Work Experience</h2>
+            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Lead Web Developer</h3>
+            <p style="color: var(--gray-600); margin-bottom: 1.5rem;">Würth Austria • 2022 - Present</p>
+            <p style="margin-bottom: 1.5rem;">As a key member of the digital team, I architect and develop robust e-commerce solutions and internal web applications, focusing on performance, scalability, and user experience.</p>
+            <h4>Key Achievements</h4>
+            <ul style="margin-left: 20px;">
+                <li>Led the migration of a legacy system to a modern Vue.js framework, improving performance by 40%</li>
+                <li>Developed a new real-time inventory tracking system</li>
+                <li>Mentored two junior developers</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div id="skills-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Core Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-column">
+                    <h4>Frontend</h4>
+                    <ul class="skill-list">
+                        <li>JavaScript (ES6+)</li>
+                        <li>TypeScript</li>
+                        <li>Vue.js</li>
+                        <li>React</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h4>Backend</h4>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>Express</li>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h4>Tools</h4>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>CI/CD</li>
+                        <li>Webpack</li>
+                        <li>Vitest</li>
+                        <li>Agile/Scrum</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Modal -->
+    <div id="projects-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Project Showcase</h2>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Vienna Transport Visualization</h3>
+                <p style="margin-bottom: 12px;">Interactive Data Visualization for public transport in Vienna. Built with D3.js and React.</p>
+                <a href="#" style="color: var(--primary-blue); font-weight: 500;">GitHub →</a>
+            </div>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+                <h3 style="color: var(--gray-800); margin-bottom: 8px;">Interactive Portfolio</h3>
+                <p style="margin-bottom: 12px;">A creative exploration of web-based interactivity using Three.js.</p>
+                <a href="#" style="color: var(--primary-blue); font-weight: 500;">Source Code →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>Let's Connect</h2>
+            <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #a855f7, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Photo</div>
+                <div style="flex: 1; min-width: 300px;">
+                    <p style="margin-bottom: 24px;">I'm a passionate developer driven by creating elegant and effective digital experiences. Think I'd be a good fit for your team?</p>
+                    <div class="contact-links">
+                        <a href="#" class="contact-link">📧 Email</a>
+                        <a href="#" class="contact-link">💼 LinkedIn</a>
+                        <a href="#" class="contact-link">🔗 GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Classic View -->
+    <div id="classic-view">
+        <div class="header-center">
+            <h1>Professional Portfolio</h1>
+            <p>Lead Web Developer & Creative Technologist</p>
+            <button id="back-to-3d" class="back-btn">Back to 3D Experience</button>
+        </div>
+
+        <div class="card">
+            <h2>Work Experience</h2>
+            <h3 style="color: var(--primary-blue);">Lead Web Developer</h3>
+            <p style="color: var(--gray-600); margin-bottom: 16px;">Würth Austria • 2022 - Present</p>
+            <p>As a key member of the digital team, I architect and develop robust e-commerce solutions and internal web applications.</p>
+        </div>
+
+        <div class="card">
+            <h2>Core Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-column">
+                    <h4>Frontend</h4>
+                    <ul class="skill-list">
+                        <li>JavaScript (ES6+)</li>
+                        <li>TypeScript</li>
+                        <li>Vue.js</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h4>Backend</h4>
+                    <ul class="skill-list">
+                        <li>Node.js</li>
+                        <li>Express</li>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-column">
+                    <h4>Tools</h4>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>CI/CD</li>
+                        <li>Webpack</li>
+                        <li>Agile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Contact</h2>
+            <p style="margin-bottom: 24px;">I'm a passionate developer driven by creating elegant digital experiences. Let's connect!</p>
+            <div class="contact-links">
+                <a href="#" class="contact-link">📧 Email</a>
+                <a href="#" class="contact-link">💼 LinkedIn</a>
+                <a href="#" class="contact-link">🔗 GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/constants.js"></script>
+    <script src="js/utils/debugLogger.js"></script>
+    <script src="js/utils/eventManager.js"></script>
+    <script src="js/scene/sceneBuilder.js"></script>
+    <script src="js/objects/objectFactory.js"></script>
+    <script src="js/environment/environmentBuilder.js"></script>
+    <script src="js/animation/animationController.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
